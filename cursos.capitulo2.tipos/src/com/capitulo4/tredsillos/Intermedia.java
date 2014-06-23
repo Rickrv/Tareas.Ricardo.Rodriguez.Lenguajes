@@ -6,6 +6,9 @@
 
 package com.capitulo4.tredsillos;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  *
  * @author Ricardo
@@ -21,11 +24,24 @@ public class Intermedia implements Runnable {
         t1.start();
         t2.start();
         t3.start();
+        t1.setName("impresion");
+        t2.setName("conexion");
+        t3.setName("guardar");
+        
     }
 
     @Override
     public void run() {
-        System.out.println("Soy un Thread mediano");
+        try {
+        if(Thread.currentThread().getName().equals("conexion"))Thread.sleep(2000);
+        if(Thread.currentThread().getName().equals("guardar"))Thread.sleep(4000);
+        if(Thread.currentThread().getName().equals("impresion"))Thread.sleep(6000);
+        System.out.println(Thread.currentThread().getName());
+        }catch(Exception e){}
+    
+
+            
+        
     }
     
 }
